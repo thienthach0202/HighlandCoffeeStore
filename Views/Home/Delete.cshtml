@@ -1,0 +1,45 @@
+﻿@model CoffeeStore.Models.Coffee
+
+@{
+    ViewData["Title"] = "Xoá";
+}
+
+<h1>Xoá</h1>
+
+<h3>Bán có chắc là muốn xoá sản phẩm này ???</h3>
+<div>
+    <h4>SMartPhone</h4>
+    <hr />
+    <dl class="row" style="border:solid">
+        <dt class="col-sm-2">
+            Tên Món
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Kích cở Ly
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class="col-sm-2">
+            Loại Đồ ăn
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            Giá bán
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CoffeeID" />
+        <input type="submit" value="Xoá" class="btn btn-danger" />
+        <a asp-action="Index">Quay lại</a>
+    </form>
+</div>

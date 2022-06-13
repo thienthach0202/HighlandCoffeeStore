@@ -1,0 +1,61 @@
+﻿@page "/admin/coffees"
+@page "/admin"
+@inherits OwningComponentBase<ICoffeeStoreRepository>
+<table class="table table-sm table-striped table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Genre</th>
+<th>Price</th>
+<td />
+</tr>
+</thead><tbody>
+@if (CoffeeData?.Count() > 0)
+{
+@foreach (Coffee b in CoffeeData)
+{
+<tr>
+<td>@b.CoffeeID</td>
+<td>@b.Title</td>
+<td>@b.Genre</td>
+<td>@b.Price.ToString("c")</td>
+<td>
+<NavLink class="btn btn-info btn-sm"
+href="@GetDetailsUrl(b.CoffeeID)">
+Details</NavLink>
+<NavLink class="btn btn-warning btn-sm"
+href="@GetEditUrl(b.CoffeeID)">
+Edit
+</NavLink>
+<button class="btn btn-danger btn-sm"
+@onclick="@(e => DeleteCoffee(b))">
+Delete
+</button>
+</td>
+</tr>
+}
+}
+else
+{
+<tr>
+<td colspan="5" class="text-center">No Coffees</td>
+</tr>
+}
+</tbody></table>
+<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
+@code {
+public ICoffeeStoreRepository Repository => Service;
+public IEnumerable<Coffee> CoffeeData { get; set; }
+public async Task UpdateData()
+{
+CoffeeData = await Repository.Coffees.ToListAsync();
+}
+public async Task DeleteCoffee(Coffee b)
+{
+Repository.DeleteCoffee(b);
+await UpdateData();
+}
+public string GetDetailsUrl(long id) => $"/admin/coffees/details/{id}";
+public string GetEditUrl(long id) => $"/admin/coffees/edit/{id}";
+}

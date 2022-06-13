@@ -1,0 +1,78 @@
+﻿@model CoffeeStore.Models.ViewModels.CoffeeListViewModel
+<p>
+    <a asp-action="Created" class="btn btn-sm  btn-success   text-uppercase"><i class="fas fa-plus-circle"></i> Add to cart</a>
+</p>
+
+
+@*@foreach (var p in Model.DienThoais)
+
+
+    {
+        <partial name="DienThoaiTemplate" model="p" />
+    }*@
+
+
+
+<div class="row">
+    @foreach (var coffee in Model.Coffees)
+    {
+        @*<tr>
+                <td>
+                    <img src="~/images/@laptop.ProfilePicture"
+                         class="rounded-circle"
+                         height="40" width="40"
+                         asp-append-version="true" />
+                    @laptop.TenSP
+                </td>
+            </tr>*@
+
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div style="color:white" class="card-header text-black bg-dark">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @coffee.Title
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="~/images/@coffee." asp-append-version="true" width="100%" height="300" />
+                    </div>
+                    <div class="col-md-12">
+                        <div style="color:white" class="card-body btn-dark ">
+                            <p class="card-text"><b>Tên Sản phẩm </b>@coffee.Title</p>
+                           
+                            <p class="card-text"><b>Hãng sản xuất </b>@coffee.Genre</p>
+                            <p class="card-text"><b>Giá </b>@coffee.Price</p>
+                            <p>
+                                <a asp-action="Delete" asp-route-id="@coffee.CoffeeID">Delete</a>
+                            </p>
+                            <p>
+                                <partial name="CoffeeTemplate" model="coffee" />
+                            </p>
+                        </div>
+                    </div>
+                    @*<div class="col-md-12">
+                            <div class="card-footer ">
+                                <p class="card-text">
+                                    <a class="btn btn-secondary float-right" asp-action="UserDetails" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Xem thông tin
+                                    </a>
+
+                                </p>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" page-url-genre="@Model.CurrentGenre"
+     class="btn-group pull-right m-1">
+
+</div>
