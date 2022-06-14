@@ -1,7 +1,7 @@
 # Đây là một project về HighlandCoffeeStore
 
 # Giao diện trang chủ
-
+![image](https://user-images.githubusercontent.com/72533521/173568146-c0ce6fb7-43ab-45e4-9b33-a27c515c57b8.png)
 
 # Các công nghệ sử dụng trong project
  
@@ -11,11 +11,8 @@
 
 # Có các tính năng ở trang web
 
-1. Hiển thị danh mục theo bạn chọn
-
-
-2. Tìm kiếm coffee mà bạn cần
-
+1. Thêm sản phẩm vào giỏ hàng và thanh toán
+![image](https://user-images.githubusercontent.com/72533521/173568488-6c685b89-2632-4c4c-8c70-84258b199353.png)
 
 # Các tính năng ở Admin Panel
 
